@@ -10,25 +10,39 @@
 </head>
 
 <body>
+    <section class="rules">
+        <p>Rules: fizz = 3, buzz = 5, fizzbuzz = 15</p>
+    </section>
 
-    <p>Rules: fizz = 3, buzz = 5, fizzbuzz = 15</p>
 
     <section class="menu">
+        <label for="timeLimit">Limits the range of possible random numbers<input type="number" name="timeLimit"
+                class="timeLimit" value="20"></label>
+        <br>
+        <label for="randomLimit">Sets the time limit in seconds<input type="number" name="randomLimit"
+                class="randomLimit" value="50"></label>
+        <br>
         Dina poäng är: <span class="score">0</span>
     </section>
     <section class="gamearea">
         <span class="number">
-            150
-        </span>
 
-        <div class="buttons">
+        </span>
+        <br>
+
+        <div class="progressOut">
+            <div class="progressIn"><span class="countDown"></span></div>
+
+        </div>
+
+        <div class="buttons" data-answer=null>
             <button class="button">Fizz</button>
             <button class="button">Buzz</button>
             <button class="button">FizzBuzz</button>
             <button class="button">Nothing</button>
         </div>
 
-        <button class="slumpNummer">SLUMPA</button>
+        <button class="stop">STOP</button>
     </section>
 
     <script src="src/app.js"></script>
