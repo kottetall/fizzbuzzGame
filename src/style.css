@@ -4,8 +4,14 @@
     box-sizing: border-box;
 }
 
+body {
+    position: relative;
+    max-width: 520px;
+    background: #75adb9;
+}
+
 section {
-    margin: 2vh 20vw;
+    margin: 2vh 5vw;
 }
 
 input {
@@ -14,40 +20,126 @@ input {
     text-align: center;
 }
 
+i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 40px;
+}
+
 button {
     height: 40px;
+    padding: 10px;
     width: 100px;
     text-transform: uppercase;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgb(161, 16, 197);
+    color: #fff;
 }
 
 button:hover,
 button:focus {
     cursor: pointer;
-    /* border: 2px; */
     border: none;
     border-bottom: 2px #000 solid;
 
 }
 
+.top {
+    position: relative;
+}
+
 .rules {
+    display: inline-block;
+    position: absolute;
+    background: #383da8;
+    color: #383da8;
     text-align: center;
-    font-size: 20pt;
+    font-size: 16pt;
+    border-radius: 100%;
+    padding: 10px;
+    transition: top ease 1s;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.rules:hover,
+.rules:focus {
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #000;
+    top: 0;
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    transition: all ease 1s;
+}
+
+.menu {
+    position: relative;
+    margin-top: 5vh;
+}
+
+.scoreHolder {
+    position: absolute;
+    right: 2vw;
+}
+
+.score {
+    font-size: 22pt;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.gamearea {
+    margin-top: 30px;
+}
+
+.feedback {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.fa-thumbs-down {
+    left: 0;
+    background: rgb(240, 62, 62);
+}
+
+.fa-thumbs-up {
+    right: 0;
+    background: rgb(62, 240, 62);
 }
 
 .number {
-    display: block;
+    display: inline-block;
     text-align: center;
     font-size: 42pt;
     font-weight: bolder;
+    margin: 5vh 0;
 }
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 10px;
 }
 
+.buttons button {
+    height: 70px;
+}
+
 .progressOut {
+    width: 80%;
+    margin: 0 auto;
     position: relative;
     height: 40px;
     background: #f00;

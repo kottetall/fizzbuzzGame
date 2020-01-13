@@ -5,30 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/f8762344d3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="src/style.css">
     <title>Fizzbuzz The Game</title>
 </head>
 
 <body>
-    <section class="rules">
-        <p>Rules: fizz = 3, buzz = 5, fizzbuzz = 15</p>
+    <section class="top">
+        <h1>FizzBuzz - The Game</h1>
+        <div class="rules">
+            <p>
+                <h2> Rules:</h2>
+                mod 3 = fizz <br>
+                mod 5 = buzz <br>
+                mod 5 and 3 = fizzbuzz
+            </p>
+        </div>
     </section>
-
 
     <section class="menu">
-        <label for="timeLimit">Limits the range of possible random numbers<input type="number" name="timeLimit"
-                class="timeLimit" value="20"></label>
+        <label for="timeLimit">Range of possible numbers<input type="number" name="timeLimit" class="timeLimit"
+                value="20"></label>
         <br>
-        <label for="randomLimit">Sets the time limit in seconds<input type="number" name="randomLimit"
-                class="randomLimit" value="50"></label>
+        <label for="randomLimit">Time limit (sec)<input type="number" name="randomLimit" class="randomLimit"
+                value="50"></label>
         <br>
-        Dina poäng är: <span class="score">0</span>
+        <span class="scoreHolder"> Score: <span class="score">0</span></span>
     </section>
     <section class="gamearea">
-        <span class="number">
+        <div class="feedback">
+            <i class="far fa-4x fa-thumbs-down"></i>
+            <span class="number">
 
-        </span>
-        <br>
+            </span>
+            <i class="far fa-4x fa-thumbs-up"></i>
+        </div>
+        <!-- <br> -->
 
         <div class="progressOut">
             <div class="progressIn"><span class="countDown"></span></div>
