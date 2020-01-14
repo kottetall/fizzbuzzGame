@@ -8,6 +8,7 @@ body {
     position: relative;
     max-width: 520px;
     background: #75adb9;
+    margin: 0 auto;
 }
 
 section {
@@ -22,10 +23,12 @@ input {
 
 i {
     position: absolute;
-    top: 50%;
+    top: -200%;
     transform: translateY(-50%);
     padding: 10px;
     border-radius: 40px;
+    opacity: 1;
+    transition: top ease-in 1s;
 }
 
 button {
@@ -58,7 +61,8 @@ button:focus {
     background: #383da8;
     color: #383da8;
     text-align: center;
-    font-size: 16pt;
+    font-style: italic;
+    font-size: 12pt;
     border-radius: 100%;
     padding: 10px;
     transition: top ease 1s;
@@ -76,8 +80,8 @@ button:focus {
     color: #fff;
     border: 1px solid #000;
     top: 0;
-    width: 200px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     transition: all ease 1s;
 }
@@ -118,6 +122,11 @@ button:focus {
     background: rgb(62, 240, 62);
 }
 
+.answer {
+    top: 50%;
+    transition: top ease 500ms;
+}
+
 .number {
     display: inline-block;
     text-align: center;
@@ -142,18 +151,20 @@ button:focus {
     margin: 0 auto;
     position: relative;
     height: 40px;
-    background: #f00;
+    background: rgb(240, 62, 62);
 }
 
 .progressIn {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #0f0;
+    background: rgb(62, 240, 62);
     top: 0;
+    transition: width ease 300ms;
 }
 
 .countDown {
+    /* Ska användas för att visa en "progressbar", men tillsvidare är det bara tiden som visas */
     position: absolute;
     top: 50%;
     right: 0;

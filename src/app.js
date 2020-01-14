@@ -1,4 +1,5 @@
-window.onload = andraNummer()
+// window.onload = andraNummer()
+gameLoop()
 
 function uppdateraPoang(nytt) {
     //TODO: kolla smidigare sätt att hämta poäng som int istället för sträng
@@ -24,56 +25,45 @@ function fizzBuzzKoll(nummer) {
 }
 
 function kontroll(e) {
-    e.target.textContent.toLowerCase() == fizzBuzzKoll(parseInt(document.querySelector(".number").textContent)) ? rattSvar() : felSvar()
+    const result = e.target.textContent.toLowerCase() == fizzBuzzKoll(parseInt(document.querySelector(".number").textContent)) ? true : false
+
+    feedbackSvar(result)
 }
 
-function rattSvar() {
-    uppdateraPoang(1)
-    // andraNummer()
-    alert("rätt") //FIXME: Ta bort alerter! TILLFÄLLIG LÖSNING
-    // raknaNed()
-    gameLoop()
-}
+function feedbackSvar(svar) {
+    // Tidtagning
+    let time = Date.now() - document.querySelector(".progressIn").dataset.start
+    document.querySelector(".countDown").textContent = "Det tog dig " + time / 1000 + " sec" //FIXME: Gör riktig lösning
 
-function felSvar() {
-    // uppdateraPoang(-1)
-    alert("fel") //FIXME: Ta bort alerter! TILLFÄLLIG LÖSNING
+    //visa ikoner
+    let showIcon = ".fa-thumbs-down"
+    let poang = -1
+    if (svar) {
+        poang = 1
+        showIcon = ".fa-thumbs-up"
+    }
+
+    uppdateraPoang(poang)
+    const feedback = document.querySelector(showIcon)
+    feedback.classList.add("answer")
+    document.querySelector(".answer").addEventListener("transitionend", function update() {
+        feedback.classList.remove("answer")
+    }, "once")
     gameLoop()
 }
 
 function andraNummer() {
+    document.querySelector(".progressIn").dataset.start = Date.now()
     document.querySelector(".number").textContent = slumpNummer(document.querySelector(".randomLimit").value)
-}
-
-document.querySelectorAll(".button").forEach((button) => {
-    button.addEventListener("click", kontroll)
-})
-
-
-
-function raknaNed() {
-    //TODO: gör mer flytande - ex intervall för 100ms och var 10de cykel ändras sekundvisaren
-    //FIXME: räknaren ökar när man trycker på en gissning - pga att man aldrig tar bort den ursprungliga intervallen. Ev lösa genom att knapptryck lägger till data-pressed=true och lägger det som ett vilkor som hämtas varje gång.
-    counter = startCount = document.querySelector(".timeLimit").value
-    document.querySelector(".countDown").textContent = counter + "sec"
-    document.querySelector(".progressIn").style.width = "100%"
-    counting = setInterval(() => {
-        if (counter === 0) {
-            clearInterval(counting)
-            felSvar()
-        } else {
-            counter--
-            document.querySelector(".countDown").textContent = counter + "sec"
-            document.querySelector(".progressIn").style.width = Math.round((counter / startCount) * 100) + "%"
-
-            document.querySelectorAll(".button").forEach((button) => {
-                button.addEventListener("click", kontroll)
-            })
-        }
-    }, 1000)
 }
 
 function gameLoop() {
     andraNummer()
-    raknaNed()
+    document.querySelectorAll(".button").forEach((button) => {
+        button.addEventListener("click", (e) => {
+            if (!document.querySelector(".answer")) {
+                kontroll(e)
+            }
+        })
+    })
 }
