@@ -6,19 +6,57 @@
 
 body {
     position: relative;
-    max-width: 520px;
-    background: #75adb9;
-    margin: 0 auto;
+    background: #3271af;
+    /* Fallback */
+    background: linear-gradient(90deg, #3271af, #75adb9 calc(calc(100vw - 520px) / 2), #75adb9 calc(100vw - calc(calc(100vw - 520px) / 2)), #3271af 100vw);
+    /* Snygga till med var */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 section {
-    margin: 2vh 5vw;
+    margin: 0 5vw;
 }
 
-input {
+h1 {
+    text-align: center;
+    margin-top: 2vh;
+}
+
+input[type="number"] {
     margin-left: 5px;
     width: 50px;
     text-align: center;
+    border: none;
+    border-radius: 10px;
+}
+
+input:hover,
+input:focus {
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-left: 5px;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    margin: 4px;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 8pt;
+}
+
+label:hover,
+label:focus {
+    cursor: pointer;
+    background: #a2ced7;
 }
 
 i {
@@ -32,6 +70,7 @@ i {
 }
 
 button {
+    font-family: "Arial Black", Gadget, sans-serif;
     height: 40px;
     padding: 10px;
     width: 100px;
@@ -51,6 +90,14 @@ button:focus {
 
 }
 
+.main {
+    position: relative;
+    margin: auto 0;
+    max-width: 520px;
+    background: #75adb9;
+    margin: 0 auto;
+}
+
 .top {
     position: relative;
 }
@@ -62,48 +109,49 @@ button:focus {
     color: #383da8;
     text-align: center;
     font-style: italic;
-    font-size: 12pt;
+    font-size: 0;
     border-radius: 100%;
     padding: 10px;
     transition: top ease 1s;
     right: 0;
     top: 0;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     overflow: hidden;
     z-index: 20;
 }
 
 .rules:hover,
 .rules:focus {
+    /* Sköt med JS istället för att underlätta med ARIA m.m */
     cursor: pointer;
     color: #fff;
     border: 1px solid #000;
     top: 0;
     width: 100%;
-    height: auto;
+    height: fit-content;
     border-radius: 10px;
+    font-size: 12pt;
     transition: all ease 1s;
 }
 
 .menu {
     position: relative;
-    margin-top: 5vh;
+    margin-top: 2vh;
 }
 
-.scoreHolder {
+.scoreHolder,
+.shortestTimeHolder {
     position: absolute;
     right: 2vw;
+    font-size: 10pt;
 }
 
-.score {
-    font-size: 22pt;
+.score,
+.shortestTime {
+    font-size: 20pt;
     font-weight: bold;
     margin-left: 5px;
-}
-
-.gamearea {
-    margin-top: 30px;
 }
 
 .feedback {
@@ -114,12 +162,18 @@ button:focus {
 
 .fa-thumbs-down {
     left: 0;
-    background: rgb(240, 62, 62);
+    /* background: rgb(240, 62, 62); */
+    /*Efter kontrastkontroll*/
+    background: #F57070;
+    /*Efter kontrastkontroll*/
 }
 
 .fa-thumbs-up {
     right: 0;
-    background: rgb(62, 240, 62);
+    /* background: rgb(62, 240, 62); */
+    /*Efter kontrastkontroll*/
+    background: #70F570;
+    /*Efter kontrastkontroll*/
 }
 
 .answer {
@@ -158,7 +212,10 @@ button:focus {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(62, 240, 62);
+    /* background: rgb(62, 240, 62); */
+    /*Efter kontrastkontroll*/
+    background: #70F570;
+    /*Efter kontrastkontroll*/
     top: 0;
     transition: width ease 300ms;
 }
@@ -174,7 +231,11 @@ button:focus {
 
 .stop {
     display: block;
-    background: #f00;
+    /* background: rgb(240, 62, 62); */
+    /*Efter kontrastkontroll*/
+    background: #F57070;
+    color: #000;
+    /*Efter kontrastkontroll*/
     font-weight: bold;
     margin: 20px auto;
     width: 200px;

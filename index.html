@@ -11,51 +11,62 @@
 </head>
 
 <body>
-    <section class="top">
-        <h1>FizzBuzz - The Game</h1>
-        <div class="rules">
-            <p>
-                <h2> Rules:</h2>
-                If the number is a multible of 3 it's <strong>"fizz"</strong> <br>
-                If the number is a multible of 5 it's <strong>"buzz"</strong> <br>
-                If the number is a multible of 5 and 3 it's <strong>"fizzbuzz"</strong>
-            </p>
-        </div>
-    </section>
+    <div class="main">
+        <section class="top">
+            <h1>FizzBuzz - The Game</h1>
+            <div class="rules">
+                <p>
+                    <h2> Rules:</h2>
+                    If the number is a multible of 3 it's <strong>"fizz"</strong> <br>
+                    If the number is a multible of 5 it's <strong>"buzz"</strong> <br>
+                    If the number is a multible of 5 and 3 it's <strong>"fizzbuzz"</strong>
+                </p>
+                <p>
+                    <h2>Points</h2>
+                    Your points are calculated using this formula: 1 + (10 - time) with an additional 10 points if
+                    "Randomize" is checked
+                </p>
+            </div>
+        </section>
 
-    <section class="menu">
-        <label for="timeLimit">Range of possible numbers<input type="number" name="timeLimit" class="timeLimit"
-                value="20"></label>
-        <br>
-        <label for="randomLimit">Time limit (sec)<input type="number" name="randomLimit" class="randomLimit"
-                value="50"></label>
-        <br>
-        <span class="scoreHolder"> Score: <span class="score">0</span></span>
-    </section>
-    <section class="gamearea">
-        <div class="feedback">
-            <i class="far fa-4x fa-thumbs-down"></i>
-            <span class="number">
+        <section class="menu">
+            <label for="timeLimit">Range of possible numbers<input type="number" id="timeLimit" name="timeLimit"
+                    class="timeLimit" value="20"></label>
+            <br>
+            <label for="randomLimit">Time limit (sec)<input type="number" name="randomLimit" id="randomLimit"
+                    class="randomLimit" value="50"></label>
+            <br>
+            <label for="randomButtons">Randomize button layout <input type="checkbox" name="randomButtons"
+                    id="randomButtons" class="randomButtons"></label>
+            <span class="scoreHolder"> Score: <span class="score">0</span></span>
+            <br>
+            <span class="shortestTimeHolder"> Shortest time: <span class="shortestTime"></span> sec</span>
+        </section>
+        <section class="gamearea">
+            <div class="feedback">
+                <i class="far fa-4x fa-thumbs-down"></i>
+                <span class="number">
 
-            </span>
-            <i class="far fa-4x fa-thumbs-up"></i>
-        </div>
-        <!-- <br> -->
+                </span>
+                <i class="far fa-4x fa-thumbs-up"></i>
+            </div>
+            <!-- <br> -->
 
-        <div class="progressOut">
-            <div class="progressIn" data-start><span class="countDown"></span></div>
+            <div class="progressOut">
+                <div class="progressIn" data-start><span class="countDown"></span></div>
 
-        </div>
+            </div>
 
-        <div class="buttons">
-            <button class="button">Fizz</button>
-            <button class="button">Buzz</button>
-            <button class="button">FizzBuzz</button>
-            <button class="button">Nothing</button>
-        </div>
+            <div class="buttons">
+                <button class="button">Fizz</button>
+                <button class="button">Buzz</button>
+                <button class="button">FizzBuzz</button>
+                <button class="button">Nothing</button>
+            </div>
 
-        <button class="stop">STOP</button>
-    </section>
+            <button class="stop">STOP</button>
+        </section>
+    </div>
 
     <script src="src/app.js"></script>
 </body>

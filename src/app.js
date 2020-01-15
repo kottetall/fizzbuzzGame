@@ -32,21 +32,33 @@ function kontroll(e) {
 
 function feedbackSvar(svar) {
     // Tidtagning
-    let time = Date.now() - document.querySelector(".progressIn").dataset.start
-    document.querySelector(".countDown").textContent = "Det tog dig " + time / 1000 + " sec" //FIXME: Gör riktig lösning
+    let shortestTimeElement = document.querySelector(".shortestTime")
+    let time = countSeconds()
+    let oldTime = parseFloat(shortestTimeElement.textContent)
+    if (!oldTime) {
+        oldTime = time
+    }
+
+    //TODO: Snygga till
+    time = time > 9 ? Math.round(time) : time
+    shortestTimeElement.textContent = time < oldTime ? time : oldTime
 
     //visa ikoner
     let showIcon = ".fa-thumbs-down"
     let poang = -1
     if (svar) {
-        poang = 1
+        poang = Math.round(1 + (10 - time))
+        if (document.querySelector(".randomButtons").checked) {
+            //FIXME: Gör om lösningen, som det är nu kan man trycka på rand-knappen och sedan svaret för att få bonusen!
+            poang += 10
+        }
         showIcon = ".fa-thumbs-up"
     }
 
     uppdateraPoang(poang)
     const feedback = document.querySelector(showIcon)
     feedback.classList.add("answer")
-    document.querySelector(".answer").addEventListener("transitionend", function update() {
+    document.querySelector(".answer").addEventListener("transitionend", () => {
         feedback.classList.remove("answer")
     }, "once")
     gameLoop()
@@ -57,7 +69,23 @@ function andraNummer() {
     document.querySelector(".number").textContent = slumpNummer(document.querySelector(".randomLimit").value)
 }
 
+function randomizeButtons(boolean) {
+    const buttonNames = ["fizz", "buzz", "fizzbuzz", "nothing"]
+    const buttons = document.querySelectorAll(".button")
+
+    for (const button of buttons) {
+        let index = boolean ? slumpNummer(buttonNames.length) : 0
+        button.textContent = buttonNames[index]
+        buttonNames.splice(index, 1)
+        index++
+    }
+
+
+}
+
 function gameLoop() {
+    randomizeButtons(document.querySelector(".randomButtons").checked)
+
     andraNummer()
     document.querySelectorAll(".button").forEach((button) => {
         button.addEventListener("click", (e) => {
@@ -67,3 +95,12 @@ function gameLoop() {
         })
     })
 }
+
+function countSeconds() {
+    return (Date.now() - document.querySelector(".progressIn").dataset.start) / 1000
+}
+
+setInterval(() => {
+    const time = Math.floor(countSeconds())
+    document.querySelector(".countDown").textContent = `You've been staring for ${time} seconds`
+}, 1000)
